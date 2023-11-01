@@ -48,4 +48,14 @@ class UserDetailsDao {
         st.close();
         return list;
     }
+
+    public static void delete(int id) throws SQLException {
+        Connection con = DbConnection.connect();
+        String query = Query.delete;
+        PreparedStatement ps = con.prepareStatement(query);
+        ps.setInt(1, id);
+        out.println("\n ps = " + ps);
+        ps.executeUpdate();
+        ps.close();
+    }
 }
